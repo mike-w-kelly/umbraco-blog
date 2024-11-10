@@ -20,6 +20,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
+    
+      - name: Change directory 
+        run: cd umbraco-blog/website
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
