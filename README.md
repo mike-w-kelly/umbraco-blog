@@ -116,3 +116,72 @@ Deployment center
 - on the left click on the workflow file under run details
 - click on the pencil icon in the right corner to edit the workflow file
 - for the Build with dotnet & dotnet publish add a working-directory: ./website which is where our .csproj file lives
+- commit the changes which will retrigger the build and deploy the webapp, this will take a few mins
+
+Prepare to export local database to Azure SQL set firewall
+- Go to Azure Portal
+- go to sql databases
+- select our database
+- Set server firewall
+- add your client IPv4 addess to the firewall rules, seems to be a bug which shows the IPv6 address so google what's my ip and use your address
+- click save
+- Open SQL Server Management Studio
+- connect to Database engine > server name server-name.database.windows.net, the SQL Server authentication use username and password from when the database was created
+
+Import / Export Data tool
+- Open Visual Studio Installer, click modify installation
+- Click individual components
+- serach for sql server data tools 
+- if not already installed click Data sources for SQL Server support and SQL Server Data Tools. Then install
+- If already present exit
+
+Export data
+Source
+- right click on database
+- Tasks > Export data...
+- click next
+- Data source: SQL Server Native Client
+- Server name: (local)
+- Authentication: Windows
+- Database: umbraco
+Destination
+- SQL Server Native Client
+- Servername: servername.database.windows.net
+- Use SQL Server Auth
+- username and password of the sql server
+- Database name: cn-umbraco-database or your name
+- click next
+- select copy data from one or more tables or views, click next
+- select all tables and click next
+- click next
+- keep run immediately selected and click next
+- review the actions and click finish
+- Will perform the operation, once the operation has successfully completed click close
+
+Grant access to App Service using Managed Identity
+- on the app service click on the resource group link
+- under the resource group you will see the managed identity that was created for the app service when we did the original deployment
+- click the managed identity
+- select Azure role assignments
+- you can see that it currently has Website Contributor
+- Next click + Add role assignment (Preview)
+- for scope click SQL, then select your subscription
+- for resource click on the sql server we've created earlier
+- for Role select Owner to keep this simple
+- Then save, after a minute or two you'll see the Owner role in the list for the managed identity below the Website Contributor
+
+Update the connection string
+- In Visual Studio
+- Make a copy of the appsettings.json and call it appsettings.Release.json
+- delete everything except the connection string
+- Then Azure go to the database
+- Under settings > connection strings copy the first entry for ADO.NET (Microsoft Entra passwordless authentication)
+- You may need to copy/type this manually as Visual Studio does something weird when it pastes it. You'll need to escape the quotes around the Active Directory Default text with a backslash \"
+- commit and push the changes
+
+Check site is running
+- go to app service and click browse
+- if already open refresh the page
+- If everything worked we should see the working site
+- can see progress of container starting in app service > monitoring > Log stream
+- site failed during startup... database error
