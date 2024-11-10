@@ -178,10 +178,11 @@ Update the connection string
 - Under settings > connection strings copy the first entry for ADO.NET (Microsoft Entra passwordless authentication)
 - You may need to copy/type this manually as Visual Studio does something weird when it pastes it. You'll need to escape the quotes around the Active Directory Default text with a backslash \"
 - commit and push the changes
+- check github actions for deployment status
 
 Check site is running
 - go to app service and click browse
 - if already open refresh the page
 - If everything worked we should see the working site
 - can see progress of container starting in app service > monitoring > Log stream
-- site failed during startup... database error
+
