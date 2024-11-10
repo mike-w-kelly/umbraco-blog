@@ -115,4 +115,4 @@ Deployment center
 - will fail, click on Build/Deploy Logs link to take you to the build in GitHub actions
 - on the left click on the workflow file under run details
 - click on the pencil icon in the right corner to edit the workflow file
-- change myapp to website
+- for the Build with dotnet & dotnet publish add a working-directory: ./website which is where our .csproj file lives
