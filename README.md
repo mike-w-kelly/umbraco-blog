@@ -173,6 +173,7 @@ Grant access to App Service using Managed Identity
 Update the connection string
 - In Visual Studio
 - Make a copy of the appsettings.json and call it appsettings.Release.json
+- add in the app service specific settings as well
 - delete everything except the connection string
 - Then Azure go to the database
 - Under settings > connection strings copy the first entry for ADO.NET (Microsoft Entra passwordless authentication)
