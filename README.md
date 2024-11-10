@@ -62,6 +62,7 @@ Install articulate
   - theme files are copied under Views > ArticulateThemes > Theme Name
 	- You can now edit this and customise it to your needs
 - commit changes and files added by umbraco and articulate to GitHub.
+- umbraco ships with a default .gitignore
 - in the terminal we can do git add . in the root dir and then git commit -m "initial commit" and git push
 - or in the right menu select Git Changes and commit all with a message
 
