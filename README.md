@@ -64,7 +64,7 @@ Install articulate
 - commit changes and files added by umbraco and articulate to GitHub.
 - umbraco ships with a default .gitignore
 - in the terminal we can do git add . in the root dir and then git commit -m "initial commit" and git push
-- or in the right menu select Git Changes and commit all with a message
+- or in the right menu select Git Changes and commit all with a message, then push the up arrow icon
 
 Host on Azure
 - you will need an azure account
@@ -93,7 +93,7 @@ Go to App Services
 - Review + Create > create
 - 
 db username: cn-umbraco-server-admin
-password: G33OnjS6o$Qs8vNJ
+password: xxxxx
 
 - deployment will take a few minutes
 - once complete go to resource
