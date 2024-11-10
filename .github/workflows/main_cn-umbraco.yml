@@ -20,6 +20,12 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
+
+      - name: Show current dir
+        run: pwd
+     
+      - name: list files
+        run: ls -al
     
       - name: Change directory 
         run: cd website
